@@ -14,8 +14,8 @@ export default defineConfig({
         "Bainianzzz 的技术博客，分享学习笔记、思考，以及日常生活的记录",
       themeConfig: {
         nav: [
-          { text: "首页", link: "/" },
           { text: "博客", link: "/blog/hello-world" },
+          { text: "日常", link: "/diary/hello-world" },
         ],
       },
     },
@@ -27,8 +27,8 @@ export default defineConfig({
         "Bainianzzz's tech blog, sharing study notes, thoughts, and everyday life.",
       themeConfig: {
         nav: [
-          { text: "Home", link: "/en/" },
           { text: "Blog", link: "/en/blog/hello-world" },
+          { text: "Diary", link: "/en/diary/hello-world" },
         ],
       },
     },
