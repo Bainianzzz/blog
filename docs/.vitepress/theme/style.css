@@ -124,3 +124,13 @@
   --vp-custom-block-tip-bg: var(--vp-c-brand-soft);
   --vp-custom-block-tip-code-bg: var(--vp-c-brand-soft);
 }
+
+/**
+ * Component: Nav Logo
+ * -------------------------------------------------------------------------- */
+
+/* 导航栏用头像当 logo：裁成圆形 */
+.VPNavBarTitle .VPImage {
+  --vp-nav-logo-height: 2rem;
+  border-radius: 50%;
+}
