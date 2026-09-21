@@ -1,16 +1,24 @@
 // https://vitepress.dev/guide/custom-theme
-import { h } from 'vue'
+import { defineComponent, h } from 'vue'
 import type { Theme } from 'vitepress'
+import { useData } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
+import DotGrid from './DotGrid.vue'
 import './style.css'
 
 export default {
   extends: DefaultTheme,
-  Layout: () => {
-    return h(DefaultTheme.Layout, null, {
-      // https://vitepress.dev/guide/extending-default-theme#layout-slots
-    })
-  },
+  Layout: defineComponent({
+    setup() {
+      // 只有首页（layout: home）才挂点阵背景
+      const { frontmatter } = useData()
+      return () =>
+        h(DefaultTheme.Layout, null, {
+          // https://vitepress.dev/guide/extending-default-theme#layout-slots
+          'layout-top': () => (frontmatter.value.layout === 'home' ? h(DotGrid) : null),
+        })
+    },
+  }),
   enhanceApp({ app, router, siteData }) {
     // ...
   }
