@@ -2,34 +2,39 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "Bainianzzz's Blog",
-  description: "One day, bainian will seek his fortune.",
+  // docs/zh/** 挂到根路由，URL 里不出现 /zh/
+  rewrites: (id: string) => id.replace(/^zh\//, ""),
 
   locales: {
     root: {
-      label: "English",
-      lang: "en",
-    },
-    zh: {
       label: "简体中文",
       lang: "zh-CN",
       title: "Bainianzzz 的博客",
-      description: "一万次悲伤，依然会有 dream",
+      description:
+        "Bainianzzz 的技术博客，分享学习笔记、思考，以及日常生活的记录",
       themeConfig: {
         nav: [
-          { text: "首页", link: "/zh/" },
-          { text: "博客", link: "/zh/blog/hello-world" },
+          { text: "首页", link: "/" },
+          { text: "博客", link: "/blog/hello-world" },
+        ],
+      },
+    },
+    en: {
+      label: "English",
+      lang: "en",
+      title: "Bainianzzz's Blog",
+      description:
+        "Bainianzzz's tech blog, sharing study notes, thoughts, and everyday life.",
+      themeConfig: {
+        nav: [
+          { text: "Home", link: "/en/" },
+          { text: "Blog", link: "/en/blog/hello-world" },
         ],
       },
     },
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
-    nav: [
-      { text: "Home", link: "/" },
-      { text: "Blog", link: "/blog/hello-world" },
-    ],
-
     // sidebar: [
     //   {
     //     text: "Examples",
