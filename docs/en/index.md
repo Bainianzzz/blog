@@ -2,7 +2,7 @@
 layout: home
 
 hero:
-  name: Bainianzzz
+  name: Qiyang Zhou
 ---
 
 Hi, I'm Qiyang Zhou. I'm working to become an AI full-stack engineer — I love tinkering with new tech, and I love open source.
@@ -11,11 +11,15 @@ Studying: Chongqing University of Posts and Telecommunications · Software Engin
 
 Interning:
 - Emotional Machine (Beijing)
-  - **SwanLab**: an open-source AI training tracking and visualization tool, with both cloud and self-hosted deployments.
+  - [**SwanLab**](https://swanlab.cn/): an open-source AI training tracking and visualization tool, with both cloud and self-hosted deployments.
 
 Projects:
-- openLLV open-source contributor
-- openLLV-playground project lead
+- [openLLV](https://github.com/glory-wan/openLLV) contributor
+  - An open-source Python library that gathers solutions for low-level vision tasks
+  - Reproduces low-level vision models from papers, so you can run inference, training, and validation with them
+- [openLLV-playground](https://github.com/Bainianzzz/openLLV-playground) project lead
+  - Call openLLV's methods visually through a Gradio interface
+  - Runs locally, with SwanLab integrated for experiment tracking
 
 Tech stack:
 - **Languages**: Go · Python · TypeScript

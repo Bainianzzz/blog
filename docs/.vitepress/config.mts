@@ -13,6 +13,7 @@ export default defineConfig({
       description:
         "Bainianzzz 的技术博客，分享学习笔记、思考，以及日常生活的记录",
       themeConfig: {
+        siteTitle: "Z",
         nav: [
           { text: "博客", link: "/blog/hello-world" },
           { text: "日常", link: "/diary/hello-world" },
@@ -26,6 +27,7 @@ export default defineConfig({
       description:
         "Bainianzzz's tech blog, sharing study notes, thoughts, and everyday life.",
       themeConfig: {
+        siteTitle: "Z",
         nav: [
           { text: "Blog", link: "/en/blog/hello-world" },
           { text: "Diary", link: "/en/diary/hello-world" },
