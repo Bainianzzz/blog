@@ -2,10 +2,10 @@
 layout: home
 
 hero:
-  name: 周启飏
+  name: Qiyang Zhou
 ---
 
-你好，我是周启飏，正努力成为一名AI全栈工程师，爱捣鼓新技术，也爱开源。
+你好，我是Qiyang Zhou，正努力成为一名AI全栈工程师，爱捣鼓新技术，也爱开源。
 
 在读：重庆邮电大学 · 软件工程
 
@@ -24,7 +24,7 @@ hero:
 技术栈：
 - **编程语言**：Go · Python · TypeScript
 - **前端开发**：Vue 3 · Vue Router · Pinia · VueUse · AG-Grid
-- **后端与数据**：Gin · Koa.js
+- **后端与数据**：Gin · Koa.js · PostgreSQL · Redis
 - **测试**：pytest · Vitest · Jest
 - **工程化**：ESLint · Prettier · Git · GitHub Actions
 - **运维**：Docker · Kubernetes · Prometheus · Grafana

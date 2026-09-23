@@ -24,7 +24,7 @@ Projects:
 Tech stack:
 - **Languages**: Go · Python · TypeScript
 - **Frontend**: Vue 3 · Vue Router · Pinia · VueUse · AG-Grid
-- **Backend & Data**: Gin · Koa.js
+- **Backend & Data**: Gin · Koa.js · PostgreSQL · Redis
 - **Testing**: pytest · Vitest · Jest
 - **Tooling**: ESLint · Prettier · Git · GitHub Actions
 - **DevOps**: Docker · Kubernetes · Prometheus · Grafana

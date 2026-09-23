@@ -3,7 +3,8 @@ import { defineComponent, h } from 'vue'
 import type { Theme } from 'vitepress'
 import { useData } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
-import DotGrid from './DotGrid.vue'
+import DotGrid from "../components/DotGrid.vue"
+import PostList from "../components/PostList.vue"
 import './style.css'
 
 export default {
@@ -15,11 +16,13 @@ export default {
       return () =>
         h(DefaultTheme.Layout, null, {
           // https://vitepress.dev/guide/extending-default-theme#layout-slots
-          'layout-top': () => (frontmatter.value.layout === 'home' ? h(DotGrid) : null),
+          "layout-top": () =>
+            frontmatter.value.layout === "home" ? h(DotGrid) : null,
         })
     },
   }),
-  enhanceApp({ app, router, siteData }) {
-    // ...
-  }
+  enhanceApp({ app }) {
+    // 全局注册，md 里直接写 <PostList prefix="/blog/" />
+    app.component("PostList", PostList)
+  },
 } satisfies Theme

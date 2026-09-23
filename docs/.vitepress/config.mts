@@ -1,9 +1,14 @@
 import { defineConfig } from 'vitepress'
+import tailwindcss from '@tailwindcss/vite'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   // docs/zh/** 挂到根路由，URL 里不出现 /zh/
   rewrites: (id: string) => id.replace(/^zh\//, ""),
+
+  vite: {
+    plugins: [tailwindcss()],
+  },
 
   locales: {
     root: {
@@ -16,8 +21,8 @@ export default defineConfig({
         siteTitle: false,
         logo: { src: "/assets/avatar.png", alt: "Bainianzzz" },
         nav: [
-          { text: "博客", link: "/blog/hello-world" },
-          { text: "日常", link: "/diary/hello-world" },
+          { text: "博客", link: "/blog/" },
+          { text: "日常", link: "/diary/" },
         ],
       },
     },
@@ -31,8 +36,8 @@ export default defineConfig({
         siteTitle: false,
         logo: { src: "/assets/avatar.png", alt: "Bainianzzz" },
         nav: [
-          { text: "Blog", link: "/en/blog/hello-world" },
-          { text: "Diary", link: "/en/diary/hello-world" },
+          { text: "Blog", link: "/en/blog/" },
+          { text: "Diary", link: "/en/diary/" },
         ],
       },
     },
