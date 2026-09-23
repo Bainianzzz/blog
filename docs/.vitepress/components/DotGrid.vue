@@ -8,9 +8,9 @@ let grid: DotGrid | undefined
 
 onMounted(() => {
   grid = new DotGrid({
-    spacing: 40,
-    dotMin: 1.5,
-    dotMax: 3,
+    spacing: 20,
+    dotMin: 1,
+    dotMax: 2,
     radiusEffect: 180,
     baseAlpha: 0.2,
     maxAlpha: 0.65,

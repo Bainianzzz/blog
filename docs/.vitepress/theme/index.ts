@@ -3,9 +3,9 @@ import { defineComponent, h } from 'vue'
 import type { Theme } from 'vitepress'
 import { useData } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
-import DotGrid from "../components/DotGrid.vue"
-import PostList from "../components/PostList.vue"
-import './style.css'
+import DotGrid from "@/components/DotGrid.vue"
+import PostList from "@/components/PostList.vue"
+import "@/theme/style.css"
 
 export default {
   extends: DefaultTheme,

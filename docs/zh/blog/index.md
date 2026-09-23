@@ -1,7 +1,8 @@
 ---
-title: 博客
----
+layout: home
 
-# 博客
+hero:
+  name: 博客
+---
 
 <PostList prefix="/blog/" />

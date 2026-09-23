@@ -1,7 +1,8 @@
 ---
-title: Diary
----
+layout: home
 
-# Diary
+hero:
+  name: Diary
+---
 
 <PostList prefix="/en/diary/" />

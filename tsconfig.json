@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "types": ["vitepress/client"],
+    "paths": {
+      "@/*": ["./docs/.vitepress/*"]
+    }
+  },
+  "include": ["docs/.vitepress/**/*"]
+}

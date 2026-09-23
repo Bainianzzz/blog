@@ -8,6 +8,12 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss()],
+    resolve: {
+      alias: {
+        // docs/.vitepress/ → @/
+        "@": new URL(".", import.meta.url).pathname,
+      },
+    },
   },
 
   locales: {
@@ -21,6 +27,7 @@ export default defineConfig({
         siteTitle: false,
         logo: { src: "/assets/avatar.png", alt: "Bainianzzz" },
         nav: [
+          { text: "主页", link: "/" },
           { text: "博客", link: "/blog/" },
           { text: "日常", link: "/diary/" },
         ],
@@ -36,6 +43,7 @@ export default defineConfig({
         siteTitle: false,
         logo: { src: "/assets/avatar.png", alt: "Bainianzzz" },
         nav: [
+          { text: "Home", link: "/en/" },
           { text: "Blog", link: "/en/blog/" },
           { text: "Diary", link: "/en/diary/" },
         ],

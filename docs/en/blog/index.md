@@ -1,7 +1,8 @@
 ---
-title: Blog
----
+layout: home
 
-# Blog
+hero:
+  name: Blog
+---
 
 <PostList prefix="/en/blog/" />

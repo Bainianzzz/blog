@@ -1,7 +1,8 @@
 ---
-title: 日常
----
+layout: home
 
-# 日常
+hero:
+  name: 日常
+---
 
 <PostList prefix="/diary/" />
