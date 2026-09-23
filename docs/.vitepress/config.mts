@@ -3,6 +3,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  base: "/blog/",
   // docs/zh/** 挂到根路由，URL 里不出现 /zh/
   rewrites: (id: string) => id.replace(/^zh\//, ""),
 
