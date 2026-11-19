@@ -2,10 +2,24 @@
 import { computed } from 'vue'
 import { withBase } from 'vitepress'
 import { data as posts } from '@/theme/posts.data'
+import { inLocale, type Locale } from '@/theme/locale'
 
-const props = defineProps<{ prefix: string }>()
+const props = defineProps<{
+  /** 按 URL 前缀取文章，如 /blog/ */
+  prefix?: string
+  /** 按合集取文章，取值为文章 frontmatter 里的 category */
+  category?: string
+  /** 合集页要区分中英文站，普通索引页不用传 */
+  locale?: Locale
+}>()
 
-const list = computed(() => posts.filter((post) => post.url.startsWith(props.prefix)))
+const list = computed(() =>
+  posts.filter((post) =>
+    props.category
+      ? post.category === props.category && inLocale(post.url, props.locale ?? 'zh')
+      : post.url.startsWith(props.prefix ?? ''),
+  ),
+)
 </script>
 
 <template>
