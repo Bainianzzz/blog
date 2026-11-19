@@ -14,10 +14,10 @@ export interface Post {
 declare const data: Post[]
 export { data }
 
-// 一次扫完全站四个栏目，各索引页用 <PostList prefix="…" /> 取自己那批
+// 一次扫完中英文两站的博客文章，各索引页用 <PostList prefix="…" /> 取自己那批
 // https://vitepress.dev/guide/data-loading#usage-example-blog-index
 export default createContentLoader(
-  ['zh/blog/*.md', 'zh/diary/*.md', 'en/blog/*.md', 'en/diary/*.md'],
+  ['zh/blog/*.md', 'en/blog/*.md'],
   {
     transform(raw): Post[] {
       return raw
