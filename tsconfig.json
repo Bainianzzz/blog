@@ -1,8 +1,6 @@
 {
   "compilerOptions": {
     "types": ["vitepress/client"],
-    "noEmit": true,
-    "allowImportingTsExtensions": true,
     "paths": {
       "@/*": ["./docs/.vitepress/*"]
     }

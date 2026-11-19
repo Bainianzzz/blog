@@ -5,7 +5,6 @@ import { useData } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
 import DotGrid from "@/components/DotGrid.vue"
 import PostList from "@/components/PostList.vue"
-import Collections from "@/components/Collections.vue"
 import "@/theme/style.css"
 
 export default {
@@ -25,6 +24,5 @@ export default {
   enhanceApp({ app }) {
     // 全局注册，md 里直接写 <PostList prefix="/blog/" />
     app.component("PostList", PostList)
-    app.component("Collections", Collections)
   },
 } satisfies Theme

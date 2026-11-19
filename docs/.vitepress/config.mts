@@ -27,9 +27,9 @@ export default defineConfig({
         siteTitle: false,
         logo: { src: "/assets/avatar.png", alt: "Bainianzzz" },
         nav: [
+          { text: "主页", link: "/" },
           { text: "博客", link: "/blog/" },
-          { text: "合集", link: "/", activeMatch: "^/$|^/collections/" },
-          { text: "关于我", link: "/about/" },
+          { text: "日常", link: "/diary/" },
         ],
       },
     },
@@ -43,9 +43,9 @@ export default defineConfig({
         siteTitle: false,
         logo: { src: "/assets/avatar.png", alt: "Bainianzzz" },
         nav: [
+          { text: "Home", link: "/en/" },
           { text: "Blog", link: "/en/blog/" },
-          { text: "Collections", link: "/en/", activeMatch: "^/en/$|^/en/collections/" },
-          { text: "About", link: "/en/about/" },
+          { text: "Diary", link: "/en/diary/" },
         ],
       },
     },
