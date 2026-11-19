@@ -52,16 +52,40 @@
  *   in custom container, badges, etc.
  * -------------------------------------------------------------------------- */
 
+/**
+ * DeepSeek 商标色 #4D6BFE，按其色相/饱和度派生同一套 3+1 色阶。
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --vp-c-deepseek-1: #3346c9;
+  --vp-c-deepseek-2: #4159e8;
+  --vp-c-deepseek-3: #4d6bfe;
+  --vp-c-deepseek-soft: rgba(77, 107, 254, 0.14);
+
+  /* 正文链接直接用商标色本身 */
+  --vp-c-link: #4d6bfe;
+}
+
+.dark {
+  --vp-c-deepseek-1: #a9b8ff;
+  --vp-c-deepseek-2: #5d77f7;
+  --vp-c-deepseek-3: #3f5cf0;
+  --vp-c-deepseek-soft: rgba(77, 107, 254, 0.16);
+
+  /* 深色背景下提亮同色相，保证可读 */
+  --vp-c-link: #a9b8ff;
+}
+
 :root {
   --vp-c-default-1: var(--vp-c-gray-1);
   --vp-c-default-2: var(--vp-c-gray-2);
   --vp-c-default-3: var(--vp-c-gray-3);
   --vp-c-default-soft: var(--vp-c-gray-soft);
 
-  --vp-c-brand-1: var(--vp-c-indigo-1);
-  --vp-c-brand-2: var(--vp-c-indigo-2);
-  --vp-c-brand-3: var(--vp-c-indigo-3);
-  --vp-c-brand-soft: var(--vp-c-indigo-soft);
+  --vp-c-brand-1: var(--vp-c-deepseek-1);
+  --vp-c-brand-2: var(--vp-c-deepseek-2);
+  --vp-c-brand-3: var(--vp-c-deepseek-3);
+  --vp-c-brand-soft: var(--vp-c-deepseek-soft);
 
   --vp-c-tip-1: var(--vp-c-brand-1);
   --vp-c-tip-2: var(--vp-c-brand-2);
@@ -135,6 +159,28 @@
 }
 
 /**
+ * Component: Nav
+ * -------------------------------------------------------------------------- */
+
+/**
+ * 主题在首页把页眉底色写透明（--vp-nav-home-bg-color: transparent，
+ * 窄屏下 ::before 也写死 transparent），分隔线也只有非首页才画。
+ * 这里让首页跟文章页一致：常态底色 + 底部一条分隔线。
+ */
+.VPNavBar.home::before {
+  background-color: var(--vp-nav-bg-color) !important;
+}
+
+.VPNavBar.home .divider-line {
+  background-color: var(--vp-nav-divider-color);
+}
+
+/* 深色下页眉底线跟着内部那条分割线走，不用 --vp-c-gutter 的纯黑 */
+.dark {
+  --vp-nav-divider-color: var(--vp-c-divider);
+}
+
+/**
  * Component: Nav Logo
  * -------------------------------------------------------------------------- */
 
@@ -148,46 +194,16 @@
  * Component: Link
  * -------------------------------------------------------------------------- */
 
-/* 正文链接：顺带去掉下划线 */
+/* 正文链接：常态用强调色、无下划线，hover 时才显示下划线 */
 .vp-doc a,
 .custom-block a {
+  color: var(--vp-c-link);
   text-decoration: none;
 }
 
-/**
- * Component: Page Title
- * -------------------------------------------------------------------------- */
-
-/**
- * 页面大标题的上下留白统一收 1/3。
- * 主题默认：hero 页上 5rem / 下 4rem，窄屏上 3rem / 下 3rem；
- * 正文页（文章）上 3rem，窄屏 2rem。
- * 这里只改纵向，左右留白和别的间距都不动。
- */
-
-.VPHero {
-  padding-top: calc(var(--vp-nav-height) + var(--vp-layout-top-height, 0px) + 2rem) !important;
-  padding-bottom: 2rem !important;
-}
-
-@media (min-width: 40rem) {
-  .VPHero {
-    padding-top: calc(var(--vp-nav-height) + var(--vp-layout-top-height, 0px) + 3.3333rem) !important;
-    padding-bottom: 2.6667rem !important;
-  }
-}
-
-.VPDoc {
-  padding-top: 1.3333rem !important;
-}
-
-@media (min-width: 40rem) {
-  .VPDoc {
-    padding-top: 2rem !important;
-  }
-}
-
-/* 标题到正文的间距也一起收（主题是 1rem） */
-.vp-doc h1 + * {
-  margin-top: 0.6667rem !important;
+.vp-doc a:hover,
+.custom-block a:hover {
+  color: var(--vp-c-link);
+  text-decoration: underline;
+  text-underline-offset: 0.15rem;
 }
