@@ -33,8 +33,6 @@ const collections = computed(() =>
     .sort((a, b) => b.date.localeCompare(a.date)),
 )
 
-const allHref = computed(() => withBase(`${localeBase(props.locale)}/collections/`))
-
 function collectionHref(name: string): string {
   return withBase(`${localeBase(props.locale)}/collections/${name}/`)
 }
@@ -43,10 +41,6 @@ function collectionHref(name: string): string {
 <template>
   <!-- 合集详情：结构与博客页一致，标题由模板页的 hero 帮忙换成了合集名 -->
   <template v-if="current">
-    <a
-      :href="allHref"
-      class="mb-2 inline-block text-sm text-(--vp-c-text-3)! hover:text-(--vp-c-text-1)!"
-    >{{ isEn ? '← All collections' : '← 全部合集' }}</a>
     <PostList :category="current" :locale="props.locale" />
   </template>
 
