@@ -1,18 +1,23 @@
 import { createContentLoader } from 'vitepress'
+// 这个文件由 Vite 的 config loader 加载，拿不到 vite 的 @ 别名，只能用相对路径
+import { isCollection } from '../collections.ts'
+import { localeOf } from './locale.ts'
 
 export interface Post {
   title: string
   url: string
   date: string
+  /** 所属合集，可选；没写的文章不进入合集系统 */
+  category?: string
 }
 
 declare const data: Post[]
 export { data }
 
-// 一次扫完全站四个栏目，各索引页用 <PostList prefix="…" /> 取自己那批
+// 一次扫完中英文两站的博客文章，各索引页用 <PostList prefix="…" /> 取自己那批
 // https://vitepress.dev/guide/data-loading#usage-example-blog-index
 export default createContentLoader(
-  ['zh/blog/*.md', 'zh/diary/*.md', 'en/blog/*.md', 'en/diary/*.md'],
+  ['zh/blog/*.md', 'en/blog/*.md'],
   {
     transform(raw): Post[] {
       return raw
@@ -22,6 +27,7 @@ export default createContentLoader(
           title: frontmatter.title ?? url,
           url,
           date: toDateString(frontmatter.date),
+          category: toCategory(frontmatter.category, url),
         }))
         .sort((a, b) => b.date.localeCompare(a.date))
     },
@@ -32,4 +38,11 @@ export default createContentLoader(
 function toDateString(value: unknown): string {
   if (value instanceof Date) return value.toISOString().slice(0, 10)
   return value ? String(value) : ''
+}
+
+// 合集是可选字段：只认清单里的名字，没写 / 留空 / 写成列表 / 写错名字，一律当作没选
+function toCategory(value: unknown, url: string): string | undefined {
+  if (typeof value !== 'string') return undefined
+  const category = value.trim()
+  return isCollection(localeOf(url), category) ? category : undefined
 }
