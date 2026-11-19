@@ -51,7 +51,8 @@ function collectionHref(name: string): string {
     <p v-if="!collections.length" class="text-(--vp-c-text-3)">
       {{ isEn ? 'No collections yet. Add `category` to a post’s frontmatter and it shows up here.' : '还没有合集，给文章 frontmatter 加上 category，它就会出现在这里。' }}
     </p>
-    <div v-else class="grid max-h-[70vh] gap-4 overflow-y-auto pr-1 sm:grid-cols-2">
+    <!-- 顶部留 16px：和 PostList 的 ul 默认 margin 对齐，各页标题到正文的间距一致 -->
+    <div v-else class="grid max-h-[70vh] gap-4 overflow-y-auto pt-4 pr-1 sm:grid-cols-2">
       <a
         v-for="collection in collections"
         :key="collection.name"
