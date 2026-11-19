@@ -1,6 +1,6 @@
 import { createContentLoader } from 'vitepress'
 // 这个文件由 Vite 的 config loader 加载，拿不到 vite 的 @ 别名，只能用相对路径
-import { COLLECTIONS } from '../collections.ts'
+import { isCollection } from '../collections.ts'
 import { localeOf } from './locale.ts'
 
 export interface Post {
@@ -44,5 +44,5 @@ function toDateString(value: unknown): string {
 function toCategory(value: unknown, url: string): string | undefined {
   if (typeof value !== 'string') return undefined
   const category = value.trim()
-  return COLLECTIONS[localeOf(url)].includes(category) ? category : undefined
+  return isCollection(localeOf(url), category) ? category : undefined
 }

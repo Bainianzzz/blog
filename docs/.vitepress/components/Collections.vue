@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { useData, withBase } from 'vitepress'
 import { data as posts } from '@/theme/posts.data'
-import { COLLECTIONS } from '@/collections'
+import { COLLECTIONS, isCollection } from '@/collections'
 import { inLocale, localeBase, type Locale } from '@/theme/locale'
 import PostList from '@/components/PostList.vue'
 
@@ -14,15 +14,17 @@ const isEn = computed(() => props.locale === 'en')
 /** 合集详情页由模板页 [name]/index.md 渲染，合集名在 params.name；总览页没有 params */
 const current = computed(() => {
   const name = page.value.params?.name
-  return typeof name === 'string' && COLLECTIONS[props.locale].includes(name) ? name : ''
+  return isCollection(props.locale, name) ? name : ''
 })
 
 const collections = computed(() =>
   COLLECTIONS[props.locale]
-    .map((name) => {
-      const list = posts.filter((post) => post.category === name && inLocale(post.url, props.locale))
+    .map((collection) => {
+      const list = posts.filter(
+        (post) => post.category === collection.name && inLocale(post.url, props.locale),
+      )
       return {
-        name,
+        ...collection,
         count: list.length,
         // 合集内最新一篇文章的日期，用来排序
         date: list.reduce((latest, post) => (post.date > latest ? post.date : latest), ''),
@@ -54,10 +56,11 @@ function collectionHref(name: string): string {
         v-for="collection in collections"
         :key="collection.name"
         :href="collectionHref(collection.name)"
-        class="flex flex-col gap-1 rounded-xl border border-(--vp-c-divider) p-4 text-(--vp-c-text-1)! no-underline! transition-colors hover:border-(--vp-c-brand-1)"
+        class="flex min-h-43 flex-col gap-1 rounded-xl border border-(--vp-c-divider) p-4 text-(--vp-c-text-1)! no-underline! transition-colors hover:border-(--vp-c-brand-1)"
       >
-        <span class="text-lg font-medium">{{ collection.name }}</span>
-        <span class="flex items-baseline gap-3 text-sm text-(--vp-c-text-3)">
+        <span class="text-2xl font-medium">{{ collection.name }}</span>
+        <span class="text-sm leading-relaxed text-(--vp-c-text-2)">{{ collection.description }}</span>
+        <span class="mt-auto flex items-baseline gap-3 text-sm text-(--vp-c-text-2)">
           <span>{{ collection.count }}{{ isEn ? ' posts' : ' 篇文章' }}</span>
           <time v-if="collection.date" :datetime="collection.date" class="ml-auto tabular-nums">{{ collection.date }}</time>
         </span>

@@ -4,7 +4,7 @@ import { COLLECTIONS } from '../../../.vitepress/collections.ts'
 
 // 一个模板页服务所有合集：合集清单换了，这里的路由跟着变
 export default defineRoutes({
-  paths: () => COLLECTIONS.zh.map((name) => ({ params: { name } })),
+  paths: () => COLLECTIONS.zh.map(({ name }) => ({ params: { name } })),
   // 详情页标题就是合集名，行为和博客页一致（hero 里的大标题 + 标签页标题）
   transformPageData: (pageData) => ({
     title: pageData.params?.name,
