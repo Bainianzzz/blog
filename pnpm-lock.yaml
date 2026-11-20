@@ -7,10 +7,6 @@ settings:
 importers:
 
   .:
-    dependencies:
-      interactive-dot-grid:
-        specifier: ^0.1.2
-        version: 0.1.2
     devDependencies:
       '@tailwindcss/vite':
         specifier: ^4.3.3
@@ -499,10 +495,6 @@ packages:
 
   html-void-elements@3.0.0:
     resolution: {integrity: sha512-bEqo66MRXsUGxWHV5IP0PUiAWwoEjba4VCzg0LjFJBpchPaTfyfCKTG6bc5F8ucKec3q5y6qOdGyYTSBEvhCrg==}
-
-  interactive-dot-grid@0.1.2:
-    resolution: {integrity: sha512-9PsaWoPjU7hWqtZaDUFShhV5sD5jKKLA3osgFi+fESLxIK/qoyLTEwK+i/8k4i8kog1GSD4NOaVi90Kf+V7mOg==}
-    engines: {node: '>=16'}
 
   jiti@2.7.0:
     resolution: {integrity: sha512-AC/7JofJvZGrrneWNaEnJeOLUx+JlGt7tNa0wZiRPT4MY1wmfKjt2+6O2p2uz2+skll8OZZmJMNqeke7kKbNgQ==}
@@ -1231,8 +1223,6 @@ snapshots:
   hookable@5.5.3: {}
 
   html-void-elements@3.0.0: {}
-
-  interactive-dot-grid@0.1.2: {}
 
   jiti@2.7.0: {}
 
