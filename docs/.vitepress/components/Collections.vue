@@ -52,12 +52,14 @@ function collectionHref(name: string): string {
       {{ isEn ? 'No collections yet. Add `category` to a post’s frontmatter and it shows up here.' : '还没有合集，给文章 frontmatter 加上 category，它就会出现在这里。' }}
     </p>
     <!-- 顶部留 16px：和 PostList 的 ul 默认 margin 对齐，各页标题到正文的间距一致 -->
-    <div v-else class="grid max-h-[70vh] gap-4 overflow-y-auto pt-4 pr-1 sm:grid-cols-2">
+    <!-- 滚动容器会裁掉超出 padding box 的内容，卡片投影左右下各占 ~10px，
+         用 -mx-3 + px-3/pb-3 留出空间（负 margin 抵掉横向偏移，保持和正文对齐） -->
+    <div v-else class="grid max-h-[70vh] gap-4 overflow-y-auto -mx-3 px-3 pt-4 pb-3 sm:grid-cols-2">
       <a
         v-for="collection in collections"
         :key="collection.name"
         :href="collectionHref(collection.name)"
-        class="flex min-h-43 flex-col gap-1 rounded-xl border border-(--vp-c-divider) p-4 text-(--vp-c-text-1)! no-underline! transition-colors hover:border-(--vp-c-brand-1)"
+        class="flex min-h-43 flex-col gap-1 rounded-xl shadow-md border border-(--vp-c-divider) p-4 text-(--vp-c-text-1)! no-underline! transition-colors hover:border-(--vp-c-brand-1)"
       >
         <span class="text-2xl font-medium">{{ collection.name }}</span>
         <span class="text-sm leading-relaxed text-(--vp-c-text-2)">{{ collection.description }}</span>
