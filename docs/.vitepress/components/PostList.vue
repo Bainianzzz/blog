@@ -25,7 +25,7 @@ const list = computed(() =>
 <template>
   <ul class="list-none! p-0!">
     <li v-for="post in list" :key="post.url" class="flex items-baseline gap-2 py-2">
-      <a :href="withBase(post.url)" class="text-xl text-(--vp-c-text-2)! hover:text-(--vp-c-text-1)!">{{ post.title }}</a>
+      <a :href="withBase(post.url)" class="post-title text-xl text-(--vp-c-text-2)! hover:text-(--vp-c-text-1)!">{{ post.title }}</a>
       <time
         :datetime="post.date"
         class="ml-auto shrink-0 text-sm tabular-nums text-(--vp-c-text-3)"
@@ -33,3 +33,24 @@ const list = computed(() =>
     </li>
   </ul>
 </template>
+
+<style scoped>
+/* 下划线用背景渐变画，宽度 0% → 100% 实现从左到右展开；
+   同时顶掉全局 .vp-doc a:hover 的 text-decoration 下划线。
+   线色用比文字浅一号的预设 text-3，不跟着文字变色 */
+.post-title {
+  text-decoration: none;
+  background-image: linear-gradient(var(--vp-c-text-3), var(--vp-c-text-3));
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  background-size: 0% 1.5px;
+  transition:
+    background-size 0.3s ease,
+    color 0.25s;
+}
+
+.post-title:hover {
+  text-decoration: none;
+  background-size: 100% 1.5px;
+}
+</style>
